@@ -25,7 +25,7 @@ const GameGrid = () => {
           xl: "1fr 1fr 1fr 1fr",
         }}
         // columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
-        padding={10}
+        paddingX={10}
         spacing={5}
       >
         {isLoading &&
