@@ -19,9 +19,10 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
   const { isOpen, onToggle } = useDisclosure();
   const skeleton = [
@@ -56,6 +57,9 @@ const GenreList = ({ onSelectGenre }: Props) => {
                     src={getCroppedImageUrl(genre.image_background)}
                   />
                   <Button
+                    fontWeight={
+                      genre.id === selectedGenre?.id ? "extrabold" : "normal"
+                    }
                     onClick={() => onSelectGenre(genre)}
                     fontSize="lg"
                     variant="link"
