@@ -30,8 +30,8 @@ const GameGrid = ({ selectedGenre }: Props) => {
           xl: "1fr 1fr 1fr 1fr",
         }}
         // columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
-        paddingX={10}
         spacing={5}
+        mt={5}
       >
         {isLoading &&
           skeletons.map((skeleton) => (

@@ -19,7 +19,7 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre;
+  selectedGenre: Genre | null;
 }
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
