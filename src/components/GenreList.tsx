@@ -1,6 +1,7 @@
-import useGenres from "../hooks/useGenres.ts";
+import useGenres, { Genre } from "../hooks/useGenres.ts";
 import {
   Box,
+  Button,
   Collapse,
   Heading,
   HStack,
@@ -16,7 +17,11 @@ import {
 import getCroppedImageUrl from "../services/image-url.ts";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
   const { isOpen, onToggle } = useDisclosure();
   const skeleton = [
@@ -43,19 +48,21 @@ const GenreList = () => {
         <Collapse in={isOpen} animateOpacity startingHeight="200px">
           <Box rounded="md" shadow="md">
             {data?.map((genre) => (
-              <ListItem
-                key={genre.id}
-                paddingY="5px"
-                cursor="pointer"
-                _hover={{ color: "yellow.200" }}
-              >
+              <ListItem key={genre.id} paddingY="5px">
                 <HStack>
                   <Image
                     boxSize="32px"
                     borderRadius={8}
                     src={getCroppedImageUrl(genre.image_background)}
                   />
-                  <Text fontSize="lg">{genre.name}</Text>
+                  <Button
+                    onClick={() => onSelectGenre(genre)}
+                    fontSize="lg"
+                    variant="link"
+                    overflow="hidden"
+                  >
+                    {genre.name}
+                  </Button>
                 </HStack>
               </ListItem>
             ))}
