@@ -31,7 +31,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   if (error) return null;
   return (
     <>
-      <Heading marginBottom={5} fontSize="2xl">
+      <Heading marginBottom={3} fontSize="2xl">
         Genres
       </Heading>
       <List>
@@ -54,6 +54,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                   <Image
                     boxSize="32px"
                     borderRadius={8}
+                    objectFit="cover"
                     src={getCroppedImageUrl(genre.image_background)}
                   />
                   <Button
@@ -63,7 +64,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                     onClick={() => onSelectGenre(genre)}
                     fontSize="lg"
                     variant="link"
-                    whiteSpace="pre-wrap"
+                    whiteSpace="normal"
                     textAlign="start"
                   >
                     {genre.name}
